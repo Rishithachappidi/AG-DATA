@@ -38,31 +38,30 @@ The system provides comprehensive historical price analysis utilizing Spark Data
 
 ## 🧠 Final ML Results
 
-Model Selection was performed using a deterministic 1% entity-safe representative sample, evaluated on an untouched 2025+ temporal test set (52,303 records).
+Model Selection was performed using a deterministic 1% entity-safe representative sample with price deviation features, evaluated on an untouched 2025+ temporal test set (48,354 records).
 
 **Model Details:**
 - **Model:** Spark MLlib Random Forest Classifier
 - **Number of Trees:** 100
-- **Max Depth:** 12
+- **Max Depth:** 14
 - **Max Bins:** 128
-- **Instance Weighting (for Class Imbalance):** 1.2
-- **Decision Threshold:** 0.50
+- **Decision Threshold:** 0.35 (Calibrated for optimal F1 & high precision)
 - **Seed:** 42L
 
 **Test Results (Untouched 2025+ Test Set):**
-- **Accuracy:** **85.06%** (Beats trivial all-normal baseline of 84.35%)
-- **Precision:** **61.48%**
-- **False Positive Rate (FPR):** **1.41%** (Ultra-low false alarm rate)
-- **Recall:** 12.11%
-- **F1 Score:** 20.23%
-- **PR-AUC:** 32.44%
-- **ROC-AUC:** 67.83%
+- **Accuracy:** **95.66%**
+- **Precision:** **86.55%**
+- **Recall:** **85.47%**
+- **F1 Score:** **86.01%**
+- **False Positive Rate (FPR):** **2.46%** (Ultra-low false alarms)
+- **ROC-AUC:** **94.82%**
+- **PR-AUC:** **86.15%**
 
-**Confusion Matrix (52,303 Unseen Test Records):**
-- **True Negatives (TN):** 43,497
-- **False Positives (FP):** 621
-- **False Negatives (FN):** 7,194
-- **True Positives (TP):** 991
+**Confusion Matrix (48,354 Unseen Test Records):**
+- **True Negatives (TN):** 39,809
+- **False Positives (FP):** 1,002
+- **False Negatives (FN):** 1,096
+- **True Positives (TP):** 6,447
 
 
 ## 📂 Distributed Storage (HDFS)
