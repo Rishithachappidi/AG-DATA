@@ -2,7 +2,7 @@
 
 This repository contains the complete implementation of a big data analytics and real-time anomaly detection system built entirely from scratch. The system ingests 132.9M real agricultural records, cleans them, engineers features, performs large-scale price analysis, predicts anomalies using machine learning, and visualizes results in a real-time streaming dashboard.
 
-## 🏗️ Complete Architecture
+## Complete Architecture
 
 ```mermaid
 graph TD
@@ -23,7 +23,7 @@ graph TD
     K --> M[Streamlit Dashboard]
 ```
 
-## 📊 Scale and Data Volume
+## Scale and Data Volume
 
 The project strictly processes real agricultural data:
 - **Real source records:** 132.9M
@@ -32,11 +32,11 @@ The project strictly processes real agricultural data:
 - **Synthetic Scalability Workload:** ≈ 7.1 GB (Used exclusively for isolated scalability testing)
 - **Total Experimental Workload:** ≈ 18 GB
 
-## 📈 Price Analytics & Forecasting
+##  Price Analytics & Forecasting
 The system provides comprehensive historical price analysis utilizing Spark DataFrames and Window functions. 
 *(Note: Forecasting is strictly out-of-scope for the live dashboard unless actively validated models are deployed).*
 
-## 🧠 Final ML Results
+## Final ML Results
 
 Model Selection was performed using a deterministic 1% entity-safe representative sample with price deviation features, evaluated on an untouched 2025+ temporal test set (48,354 records).
 
@@ -64,7 +64,7 @@ Model Selection was performed using a deterministic 1% entity-safe representativ
 - **True Positives (TP):** 6,447
 
 
-## 📂 Distributed Storage (HDFS)
+## Distributed Storage (HDFS)
 
 All data is reliably persisted in HDFS (1 NameNode + 3 DataNodes) with Replication Factor = 3:
 - **Canonical Dataset:** `/agri/processed/canonical`
@@ -74,14 +74,14 @@ All data is reliably persisted in HDFS (1 NameNode + 3 DataNodes) with Replicati
 - **Streaming Predictions Sink:** `/agri/streaming/real_anomaly_predictions`
 - **Streaming Checkpoints:** `/agri/checkpoints/real_market_stream`
 
-## 🚀 Real-Time Streaming Infrastructure
+## Real-Time Streaming Infrastructure
 
 Kafka acts as the event transport mechanism (not a database).
 - **Topic:** `agri-market-real-replay` (for real data replay)
 - **Host Producer:** `localhost:9092`
 - **Spark Structured Streaming Consumer:** `host.docker.internal:29092`
 
-## 📊 Streamlit Dashboard
+##  Streamlit Dashboard
 
 A lightweight, real-time PySpark + Streamlit dashboard reads directly from the streaming sink and batch analytics paths.
 - **Title:** Large-Scale Agricultural Market Data & Real-Time Analysis
